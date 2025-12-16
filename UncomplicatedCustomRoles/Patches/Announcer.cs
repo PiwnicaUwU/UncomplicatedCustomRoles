@@ -17,7 +17,7 @@ using UncomplicatedCustomRoles.Manager;
 
 namespace UncomplicatedCustomRoles.Patches
 {
-    [HarmonyPatch(typeof(NineTailedFoxAnnouncer), nameof(NineTailedFoxAnnouncer.AnnounceScpTermination))]
+    [HarmonyPatch(typeof(Cassie.CassieScpTerminationAnnouncement), nameof(Cassie.CassieScpTerminationAnnouncement.AnnounceScpTermination))]
     internal class Announcer
     {
         static bool Prefix(ReferenceHub scp, DamageHandlerBase hit)

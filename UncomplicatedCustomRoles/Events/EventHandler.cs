@@ -8,28 +8,29 @@
  * If not, see <https://www.gnu.org/licenses/>.
  */
 
-using Exiled.API.Features;
-using System.Collections.Generic;
-using UncomplicatedCustomRoles.Manager;
-using MEC;
-using Exiled.Events.EventArgs.Player;
-using PlayerRoles;
-using Exiled.Events.EventArgs.Server;
-using Exiled.Events.EventArgs.Scp049;
-using UncomplicatedCustomRoles.Extensions;
-using System;
-using UncomplicatedCustomRoles.API.Features;
-using Exiled.Events.EventArgs.Scp330;
 using CustomPlayerEffects;
-using UncomplicatedCustomRoles.API.Interfaces;
-using Exiled.Events.EventArgs.Warhead;
-using PlayerRoles.Ragdolls;
-using Exiled.Events.EventArgs.Scp096;
-using UncomplicatedCustomRoles.API.Features.CustomModules;
-using System.Linq;
 using Exiled.API.Extensions;
-using UnityEngine;
+using Exiled.API.Features;
+using Exiled.Events.EventArgs.Player;
+using Exiled.Events.EventArgs.Scp049;
+using Exiled.Events.EventArgs.Scp096;
+using Exiled.Events.EventArgs.Scp330;
+using Exiled.Events.EventArgs.Server;
+using Exiled.Events.EventArgs.Warhead;
+using MEC;
+using PlayerRoles;
+using PlayerRoles.Ragdolls;
+using RelativePositioning;
+using System;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
+using System.Linq;
+using UncomplicatedCustomRoles.API.Features;
+using UncomplicatedCustomRoles.API.Features.CustomModules;
+using UncomplicatedCustomRoles.API.Interfaces;
+using UncomplicatedCustomRoles.Extensions;
+using UncomplicatedCustomRoles.Manager;
+using UnityEngine;
 
 namespace UncomplicatedCustomRoles.Events
 {
@@ -168,7 +169,7 @@ namespace UncomplicatedCustomRoles.Events
             ev.IsAllowed = false;
             RagdollAppearanceQueue.Remove(ev.Player.Id);
 
-            RagdollData data = new(ev.Player.ReferenceHub, ev.DamageHandlerBase, RoleTypeId.Tutorial, ev.Position, ev.Rotation, ev.Nickname, ev.CreationTime);
+            RagdollData data = new(ev.Player.ReferenceHub, ev.DamageHandlerBase, RoleTypeId.Tutorial, new RelativePosition(ev.Position), ev.Rotation, ev.Nickname, ev.CreationTime);
             Ragdoll.CreateAndSpawn(data);
         }
 
