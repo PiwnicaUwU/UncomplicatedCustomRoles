@@ -333,10 +333,10 @@ namespace UncomplicatedCustomRoles.Patches
     {
         static bool Prefix(HumanRole __instance, ref Team __result)
         {
-            if (__instance._lastOwner is null)
+            if (!__instance.TryGetOwner(out ReferenceHub owner))
                 return true;
 
-            if (DisguiseTeam.List.TryGetValue(__instance._lastOwner.PlayerId, out __result))
+            if (DisguiseTeam.List.TryGetValue(owner.PlayerId, out __result))
                 return false;
 
             return true;
@@ -348,10 +348,10 @@ namespace UncomplicatedCustomRoles.Patches
     {
         static bool Prefix(FpcStandardScp __instance, ref Team __result)
         {
-            if (__instance._lastOwner is null)
+            if (!__instance.TryGetOwner(out ReferenceHub owner))
                 return true;
 
-            if (DisguiseTeam.List.TryGetValue(__instance._lastOwner.PlayerId, out __result))
+            if (DisguiseTeam.List.TryGetValue(owner.PlayerId, out __result))
                 return false;
 
             return true;
@@ -363,10 +363,10 @@ namespace UncomplicatedCustomRoles.Patches
     {
         static bool Prefix(Scp079Role __instance, ref Team __result)
         {
-            if (__instance._lastOwner is null)
+            if (!__instance.TryGetOwner(out ReferenceHub owner))
                 return true;
 
-            if (DisguiseTeam.List.TryGetValue(__instance._lastOwner.PlayerId, out __result))
+            if (DisguiseTeam.List.TryGetValue(owner.PlayerId, out __result))
                 return false;
 
             return true;
